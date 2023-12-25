@@ -10,6 +10,6 @@ const categorySchema = new Schema<Category>({
     description: String,
 })
 
-const categoryModel = model<Category>('categories', categorySchema);
+const Categories = model<Category>('categories', categorySchema);
 
-export default categoryModel;
+export default Categories;
