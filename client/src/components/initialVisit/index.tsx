@@ -1,9 +1,13 @@
-import React, { ChangeEvent, ChangeEventHandler, FormEvent, useState } from 'react'
+import { ChangeEvent, FC, FormEvent, useState } from 'react'
 import './styles.scss'
 import { Input } from '../../components';
 import axios from 'axios';
 
-const InitialVisit = () => {
+interface InitialVisit{
+  setUser: (value: boolean | ((prevVar: boolean) => boolean)) => void;
+}
+
+const InitialVisit: FC<InitialVisit> = ({setUser}) => {
 
   const [name, setName] = useState('');
 
@@ -13,10 +17,15 @@ const InitialVisit = () => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    
     const response = await axios.post('http://localhost:5000/api/users', {name});
+
+    if(response.status === 200) localStorage.setItem('uid', response.data);
     if(response.status === 201){
       localStorage.setItem('uid', response.data._id);
     }
+
+    setUser(true);
   }
 
   return (  
