@@ -1,0 +1,13 @@
+.navbar{
+    padding: 15px;
+    background-color: white;
+    border-bottom: 1px solid black;
+
+    &__welcome{
+        margin: 0;
+
+        &--highlight{
+            color: rgb(139, 38, 255);
+        }
+    }
+}

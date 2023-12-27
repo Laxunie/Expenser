@@ -1,11 +1,16 @@
 import "./styles.scss";
 
 import { Purchases, InitialVisit } from '../../components';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Home = () => {
 
     const [user, setUser] = useState(false);
+
+    useEffect(() => {
+        const user = localStorage.getItem('uid');
+        user && setUser(true);
+    },[])
 
     return (
         <div className='home'>

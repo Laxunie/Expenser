@@ -9,10 +9,8 @@ interface Errors{
     [key: string]: ErrorTypes
 }
 
-router.get('/', async (req: Request, res: Response) => {
-    const user = await Users.findOne({
-        name: req.body.name
-    })
+router.get('/:id', async (req: Request, res: Response) => {
+    const user = await Users.findById(req.params.id);
 
     res.status(201).json(user);
 })
