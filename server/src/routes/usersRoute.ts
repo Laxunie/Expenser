@@ -20,15 +20,19 @@ router.get('/', async (req: Request, res: Response) => {
 router.post('/', async (req: Request, res: Response) => {
     const errors: Errors = {};
     if(!req.body.name) errors.name = "Name must be provided";
+    console.log(req.body);
 
     try{
-        const user = new Users({
+        const user = await Users.findOne({name: req.body.name});
+        if(user) return res.status(200).send("User already exists");
+
+        const newUser = new Users({
             name: req.body.name,
         })
     
-        await user.save();
+        await newUser.save();
 
-        res.status(201).json(user);
+        res.status(201).json(newUser);
     }
     catch{
         res.status(500).send(errors);

@@ -1,6 +1,7 @@
 import React, { ChangeEvent, ChangeEventHandler, FormEvent, useState } from 'react'
 import './styles.scss'
 import { Input } from '../../components';
+import axios from 'axios';
 
 const InitialVisit = () => {
 
@@ -8,7 +9,14 @@ const InitialVisit = () => {
 
   const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value)
-    console.log(name)
+  }
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    const response = await axios.post('http://localhost:5000/api/users', {name});
+    if(response.status === 201){
+      localStorage.setItem('uid', response.data._id);
+    }
   }
 
   return (  
@@ -20,7 +28,7 @@ const InitialVisit = () => {
                 <section className='initialVisit__formSection'>
                   <h2 className='initialVisit__signinMessage'>Get Started Now!</h2>
                   <p className='initialVisit__inputMessage'>Simply enter your name below</p>
-                  <form className='initialVisit__form'>
+                  <form className='initialVisit__form' onSubmit={handleSubmit}>
                       <Input className='initialVisit__inputName' type='text' placeholder='Name' onChange={handleNameChange} value={name} />
                       <button type='submit' className='initialVisit__submitButton'>Launch</button>
                   </form>
