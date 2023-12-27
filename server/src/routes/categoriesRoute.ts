@@ -14,7 +14,7 @@ router.post('/', async (req: Request, res: Response) => {
         res.status(201).json(category);
     }
     catch(err){
-        res.status(400).send("Title cannot be empty");
+        res.status(500).send("Title cannot be empty");
     }
 })
 

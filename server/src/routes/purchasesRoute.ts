@@ -32,7 +32,7 @@ router.post('/', async (req: Request, res: Response) => {
         res.status(201).json(purchases);
     }
     catch(err){
-        res.status(401).json(errors)
+        res.status(500).json(errors)
     }
 })
 

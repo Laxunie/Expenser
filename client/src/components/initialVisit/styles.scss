@@ -1,0 +1,75 @@
+.initialVisit{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    background-color: rgba(75, 85, 99, 0.75);
+
+    &__container{
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 600px;
+        height: 500px;
+        background-color: white;
+        border-radius: 10px;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__welcome{
+        margin: 0;
+
+        &--highlight{
+            color: rgb(139, 38, 255);
+        }
+    }
+
+    &__message{
+        margin: 0;
+    }
+
+    &__signin{
+        background-color:  rgb(202, 159, 252);;
+        border-top: 10px solid  rgb(139, 38, 255);;
+        border-radius: 5px;
+        height: 100%;
+        margin-top: 20px;
+        padding: 0px 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    &__signinMessage{
+        margin: 0;
+    }
+
+    &__inputMessage{
+        margin: 0;
+    }
+
+    &__formSection{
+        display: flex;
+        flex-direction: column;
+        gap:10px
+    }
+
+    &__form{
+        display: flex;
+        gap: 10px;
+        justify-content: space-between;
+    }
+
+    &__submitButton{
+        width: 100px;
+        border-radius: 10px;
+        border: none;
+
+        &:hover{
+            border: 2px solid rgb(139, 38, 255);
+        }
+    }
+}
