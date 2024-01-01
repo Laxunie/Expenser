@@ -62,14 +62,4 @@
         gap: 10px;
         justify-content: space-between;
     }
-
-    &__submitButton{
-        width: 100px;
-        border-radius: 10px;
-        border: none;
-
-        &:hover{
-            border: 2px solid rgb(139, 38, 255);
-        }
-    }
 }

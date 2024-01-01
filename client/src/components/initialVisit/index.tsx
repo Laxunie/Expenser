@@ -1,6 +1,6 @@
 import { ChangeEvent, FC, FormEvent, useState } from 'react'
 import './styles.scss'
-import { Input } from '../../components';
+import { Form, Input } from '../../components';
 import axios from 'axios';
 
 interface InitialVisit{
@@ -26,6 +26,7 @@ const InitialVisit: FC<InitialVisit> = ({setUser}) => {
     }
 
     setUser(true);
+    window.location.reload();
   }
 
   return (  
@@ -37,10 +38,9 @@ const InitialVisit: FC<InitialVisit> = ({setUser}) => {
                 <section className='initialVisit__formSection'>
                   <h2 className='initialVisit__signinMessage'>Get Started Now!</h2>
                   <p className='initialVisit__inputMessage'>Simply enter your name below</p>
-                  <form className='initialVisit__form' onSubmit={handleSubmit}>
-                      <Input className='initialVisit__inputName' type='text' placeholder='Name' onChange={handleNameChange} value={name} />
-                      <button type='submit' className='initialVisit__submitButton'>Launch</button>
-                  </form>
+                  <Form onSubmit={handleSubmit} className='initialVisit__form'>
+                    <Input className='initialVisit__input' type='text' placeholder='Name' onChange={handleNameChange} value={name} />
+                  </Form>
                 </section>
                 <p>This site is created to work on a single device and information cannot be transferred across multiple device.</p>
             </div>

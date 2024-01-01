@@ -10,9 +10,15 @@ interface Errors{
 }
 
 router.get('/:id', async (req: Request, res: Response) => {
-    const user = await Users.findById(req.params.id);
+    try{
+        const user = await Users.findById(req.params.id);
 
-    res.status(201).json(user);
+        res.status(201).json(user);
+    }
+    catch{
+        res.status(500).send("User not found");
+    }
+    
 })
 
 router.post('/', async (req: Request, res: Response) => {
