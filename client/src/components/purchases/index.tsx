@@ -1,7 +1,7 @@
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import "./styles.scss";
-import { ChangeEvent, useEffect, useState } from "react";
-import { CiSquarePlus } from "react-icons/ci";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { CiSquarePlus, CiSquareMinus } from "react-icons/ci";
 import { Form, Input } from '..';
 
 interface Purchase{
@@ -15,11 +15,12 @@ const Purchases = () => {
     const [purchasesData, setPurchaseData] = useState<Purchase[]>();
     const [Loading, setLoading] = useState(true);
     const [toggleModal, setToggleModal] = useState(false);
-    const [formData, setFormData] = useState({
+    const initialState = {
         store: '',
-        amountPayed: 0,
-        date: ''
-    })
+        amountPayed: NaN,
+        date: '01/01/2024'
+    }
+    const [formData, setFormData] = useState(initialState)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -32,39 +33,55 @@ const Purchases = () => {
         } 
 
         fetchData();
-    },[]);
+    },[formData]);
+
+    const handleAdd = async (e: FormEvent) => {
+        e.preventDefault();
+        await axios.post('http://localhost:5000/api/purchases', {
+            store: formData.store,
+            amountPayed: formData.amountPayed,
+            dateOfPurchase: formData.date
+        })
+
+        setFormData(initialState)
+    }
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const {name, value} = e.target
         setFormData({...formData, [name]: value});
     }
 
-    const addPurchase = () => {
+    const addDropDown = () => {
         setToggleModal(state => state = !state);
+    }
+
+    const formatDate = (date: string) => {
+        const newDate = new Date(date);
+        return newDate.toLocaleDateString();
     }
 
     return (
         <>
             {toggleModal && 
-                <Form>
-                    <Input className='form__input' type='text' placeholder='Name' onChange={handleChange} value={formData.store} name="store"/>
-                    <Input className='form__input' type='number' placeholder='Name' onChange={handleChange} value={formData.amountPayed} name="amountPayed"/>
-                    <Input className='form__input' type='date' placeholder='Name' onChange={handleChange} value={formData.date} name="date"/>
+                <Form className='purchases__form' text="Add" onSubmit={handleAdd}>
+                    <Input className='form__input' type='text' placeholder='Store' onChange={handleChange} value={formData.store} name="store"/>
+                    <Input className='form__input' type='number' placeholder="Price" onChange={handleChange} value={formData.amountPayed} name="amountPayed"/>
+                    <Input className='form__input' type='date' onChange={handleChange} value={formData.date} name="date"/>
                 </Form>
             }
             <div className='purchases__header'>
                 <h1 className='purchases__title'>Recent Purchases</h1>
-                <CiSquarePlus size={32} onClick={addPurchase}/>
+                {toggleModal ? <CiSquareMinus size={32} onClick={addDropDown}/> : <CiSquarePlus size={32} onClick={addDropDown}/>}
             </div>
             <ul className='purchases__list'>
                 {!Loading && purchasesData?.map((p) => (
                     <li className='purchases__items' key={p._id}>
                         <p className='purchases__item purchases__item--bold'>{p.store}</p>
-                        <div className='purchases__amountPayed'>
-                            <p className='purchases__item purchases__item--bold'>{p.amountPayed.toFixed(2)}{"\u0024"}</p>
+                        <div className='purchases__item purchases__amountPayed'>
+                            <p className='purchases__item--bold'>{p.amountPayed.toFixed(2)}{"\u0024"}</p>
                             <p className='purchases__itemLabel'>Purchase Amount</p>
                         </div>
-                        <p className='purchases__item purchases__item--bold'>{p.dateOfPurchase}</p> 
+                        <p className='purchases__item purchases__item--bold'>{formatDate(p.dateOfPurchase)}</p> 
                     </li>
                 ))}
             </ul>

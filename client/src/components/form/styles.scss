@@ -1,11 +1,20 @@
 .initialVisit__form{
-    button{
-        width: 100px;
-        border-radius: 10px;
-        border: none;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
 
-        &:hover{
-            border: 2px solid rgb(139, 38, 255);
-        }
+.purchases__form{
+    display: flex;
+    gap: 20px;
+}
+
+button{
+    width: 100px;
+    border-radius: 10px;
+    border: 2px solid black;
+
+    &:hover{
+        border: 2px solid rgb(139, 38, 255);
     }
 }

@@ -6,7 +6,7 @@ interface InputProps extends React.HTMLAttributes<HTMLInputElement>{
     type: "text" | "password" | "email" | "number" | "date",
     placeholder?: string,
     value: ValueTypes,
-    name?: string
+    name?: string,
 }
 
 const Input: FC<InputProps> = ({className, type, placeholder, value, name, ...props}) => {
