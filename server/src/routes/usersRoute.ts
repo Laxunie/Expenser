@@ -52,7 +52,7 @@ router.put('/:id', async (req: Request, res: Response) => {
             new: true
         })
     
-        res.status(201).send(user);
+        res.status(201).send("Settings updated!");
     }catch{
         res.status(500).send("User ID does not exist");
     }

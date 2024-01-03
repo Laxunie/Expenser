@@ -2,12 +2,23 @@
     padding: 15px;
     background-color: white;
     border-bottom: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;    
 
     &__welcome{
         margin: 0;
 
         &--highlight{
             color: rgb(139, 38, 255);
+        }
+    }
+
+    &__settings{
+        
+        &:hover{
+            color: rgb(139, 38, 255);
+            cursor: pointer;
         }
     }
 }

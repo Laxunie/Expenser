@@ -18,7 +18,8 @@ const Home = () => {
             <div className="home__grid">
                 {!user && <InitialVisit setUser={setUser}/>}
                 <div className='home__chart'></div>
-                <div className='home__options'></div>
+                <div className='home__options'>
+                </div>
                 <div className='home__purchases'>
                     <Purchases/>
                 </div>
