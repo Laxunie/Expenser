@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import "./styles.scss";
 
 interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement>{
-    
+    type: "submit"
 }
 
 const Button: FC<ButtonProps> = ({className, children, ...props}) => {

@@ -71,7 +71,10 @@ const Purchases = () => {
             }
             <div className='purchases__header'>
                 <h1 className='purchases__title'>Recent Purchases</h1>
-                {toggleModal ? <CiSquareMinus size={32} onClick={addDropDown}/> : <CiSquarePlus size={32} onClick={addDropDown}/>}
+                {toggleModal 
+                    ? <CiSquareMinus size={32} onClick={addDropDown} className='purchases__addButton'/> 
+                    : <CiSquarePlus size={32} onClick={addDropDown} className='purchases__addButton'
+                />}
             </div>
             <ul className='purchases__list'>
                 {!Loading && purchasesData?.map((p) => (

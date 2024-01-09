@@ -9,12 +9,10 @@
     gap: 20px;
 }
 
-button{
-    width: 100px;
-    border-radius: 10px;
-    border: 2px solid black;
-
-    &:hover{
-        border: 2px solid rgb(139, 38, 255);
-    }
+.settings__form{
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin: 10px;
 }

@@ -28,8 +28,12 @@ const Navbar = () => {
   
   return (
     <div className='navbar'>
-        <h2 className='navbar__welcome'>Welcome <span className='navbar__welcome--highlight'>{user.name}</span></h2>
-        <CiSettings size={32} className="navbar__settings" onClick={handleMouseEnter}/>
+        <h2 className='navbar__welcome'>Welcome <span className='navbar--highlight'>{user.name}</span></h2>
+        <div className='navbar__userInfo'>
+          <h3>Current Employer: <span className='navbar--highlight'>{user.employer}</span></h3>
+          <h3>Monthly Income: <span className='navbar--highlight'>${user.monthlyIncome}</span></h3>
+          <CiSettings size={32} className="navbar__settings" onClick={handleMouseEnter}/>
+        </div>
         {toggleSettings && <ProfileSettings setToggleSettings={setToggleSettings}/>}
     </div>
   )

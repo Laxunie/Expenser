@@ -9,6 +9,10 @@ interface Errors{
     [key: string]: ErrorTypes
 }
 
+interface UpdateField{
+    [key: string]: string | number
+}
+
 router.get('/:id', async (req: Request, res: Response) => {
     try{
         const user = await Users.findById(req.params.id);
@@ -44,10 +48,14 @@ router.post('/', async (req: Request, res: Response) => {
 })
 
 router.put('/:id', async (req: Request, res: Response) => {
+    const updateFields: UpdateField = {};
+
+    if(req.body.employer !== "" && req.body.employer !== undefined) updateFields.employer = req.body.employer;
+    if(req.body.monthlyIncome !== 0 && req.body.monthlyIncome !== undefined) updateFields.monthlyIncome = req.body.monthlyIncome;
+    console.log(Object.keys(updateFields).length)
     try{
-        const user = await Users.findByIdAndUpdate(req.params.id, {
-            employer: req.body.employer,
-            monthlyIncome: req.body.monthlyIncome,
+        await Users.findByIdAndUpdate(req.params.id, {
+            updateFields
         },{
             new: true
         })

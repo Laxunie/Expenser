@@ -8,9 +8,16 @@
 
     &__welcome{
         margin: 0;
+    }
 
-        &--highlight{
-            color: rgb(139, 38, 255);
+    &__userInfo{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+
+        h3{
+            margin: 0;
         }
     }
 
@@ -20,5 +27,9 @@
             color: rgb(139, 38, 255);
             cursor: pointer;
         }
+    }
+
+    &--highlight{
+        color: rgb(139, 38, 255);
     }
 }

@@ -1,8 +1,10 @@
 button{
-    border: none;
-    height: 100%;
+    width: 100px;
+    border-radius: 10px;
+    border: 2px solid black;
 
     &:hover{
-        color: rgb(139, 38, 255);
+        border: 2px solid rgb(139, 38, 255);
+        cursor: pointer;
     }
 }
