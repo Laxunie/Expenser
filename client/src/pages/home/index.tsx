@@ -1,6 +1,6 @@
 import "./styles.scss";
 
-import { Purchases, InitialVisit, Navbar } from '../../components';
+import { Purchases, InitialVisit, Navbar, Bills } from '../../components';
 import { useEffect, useState } from "react";
 
 const Home = () => {
@@ -18,7 +18,8 @@ const Home = () => {
             <div className="home__grid">
                 {!user && <InitialVisit setUser={setUser}/>}
                 <div className='home__chart'></div>
-                <div className='home__options'>
+                <div className='home__bills'>
+                    <Bills/>
                 </div>
                 <div className='home__purchases'>
                     <Purchases/>

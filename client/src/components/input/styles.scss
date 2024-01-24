@@ -1,4 +1,13 @@
 //InitialVisit component styles
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
 
 input{
     width: 100%;
@@ -7,4 +16,18 @@ input{
     border: none;
     border-radius: 10px;
     padding: 10px;      
+}
+
+.small{
+    width: 100px;
+    height: 30px;
+}
+
+.card__item{
+    font-size: 12px;
+    padding: 2px;
+    height: 30px;
+    width: 60px;
+    border-radius: 4px;
+    text-align: center;
 }

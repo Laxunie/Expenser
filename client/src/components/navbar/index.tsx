@@ -20,7 +20,7 @@ const Navbar = () => {
       setUser(response.data);
     }
     fetchUser();
-  })
+  },[])
 
   const handleMouseEnter: MouseEventHandler = () => {
       setToggleSettings(state => state = !state);

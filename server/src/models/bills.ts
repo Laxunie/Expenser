@@ -1,17 +1,17 @@
 import { Schema, model } from "mongoose";
 
-interface Monthly{
+interface Bill{
     title: string,
     description?: string,
     expenses: object
 }
 
-const monthlySchema = new Schema<Monthly>({
+const billSchema = new Schema<Bill>({
     title: { type: String, required: true },
     description: String,
     expenses: Object,
 })
 
-const Monthly = model<Monthly>('monthly', monthlySchema);
+const Bill = model<Bill>('bills', billSchema);
 
-export default Monthly;
+export default Bill;

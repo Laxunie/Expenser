@@ -1,0 +1,37 @@
+h1{
+    margin: 0;
+}
+.bills{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 10px;
+
+    &__title{
+        color: rgb(139, 38, 255);
+    }
+
+    &__header{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    &__container{
+        overflow-x: auto;
+        white-space: nowrap;
+        height: 100%;
+        padding: 5px;
+    }
+}
+
+.bills__addButton{
+    flex-shrink: 0;
+
+    &:hover{
+        color: rgb(139, 38, 255);
+        cursor: pointer;
+    }
+}

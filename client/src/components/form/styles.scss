@@ -16,3 +16,12 @@
     gap: 3px;
     margin: 10px;
 }
+
+.card__form{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}

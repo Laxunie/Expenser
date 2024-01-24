@@ -1,0 +1,56 @@
+.card{
+    border: rgb(223, 239, 255) solid 1px;  
+    border-radius: 5px;
+    width: 250px;
+    display: inline-block;
+    text-align: center;
+    height: 100%;
+    vertical-align: top;
+    margin-right: 10px;
+    background-color: white;
+
+    &:last-child{
+        margin-right: 0;
+    }
+    
+
+    &__expenses{
+        width: 100%;
+        height: 100px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+
+        *{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    &__expenseItem{
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+    }
+
+    &__item{
+        margin: 0;
+        font-size: 15px;
+        height: 25px;
+        word-wrap: break-word;
+
+        &--bold{
+            font-weight: bold;
+        }
+    }
+
+    &__layout{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+    }
+}

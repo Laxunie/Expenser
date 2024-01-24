@@ -52,14 +52,13 @@ router.put('/:id', async (req: Request, res: Response) => {
 
     if(req.body.employer !== "" && req.body.employer !== undefined) updateFields.employer = req.body.employer;
     if(req.body.monthlyIncome !== 0 && req.body.monthlyIncome !== undefined) updateFields.monthlyIncome = req.body.monthlyIncome;
-    console.log(Object.keys(updateFields).length)
+    
     try{
         await Users.findByIdAndUpdate(req.params.id, {
-            updateFields
+           $set: updateFields
         },{
             new: true
         })
-    
         res.status(201).send("Settings updated!");
     }catch{
         res.status(500).send("User ID does not exist");
